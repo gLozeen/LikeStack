@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://btlgxp3jejafl"]
+
+[ext_resource type="Script" path="res://main_script.cs" id="1_7ggfq"]
+
+[sub_resource type="Animation" id="Animation_lwi0w"]
+resource_name = "CameraMovement"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-7.457, 6.52, -6.058), Vector3(-7.457, 7.52, -6.058)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eyetl"]
+_data = {
+"CameraMovement": SubResource("Animation_lwi0w")
+}
+
+[node name="Scene" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0898342, -0.164074, -0.119726)
+script = ExtResource("1_7ggfq")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.718357, 0.349938, -0.601254, 2.4004e-08, 0.864275, 0.503019, 0.695674, 0.361348, -0.620858, -6, 6.448, -6)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866026, 0, 0.5, 0.353553, 0.707107, 0.612373, -0.353553, 0.707107, -0.612373, 6.23201, 7.39276, -7.34052)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="DirectionalLight3D"]
+transform = Transform3D(-0.339513, 0.043259, 0.939606, 0.483064, 0.865159, 0.134717, -0.807081, 0.499628, -0.31463, 12.9783, 4.76497, -12.9034)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eyetl")
+}
+
+[node name="Score" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Score: 0"
